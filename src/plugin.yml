@@ -1,6 +1,6 @@
 main: me.cynicalpopcorn.harderhard.HarderHard
 name: HarderHard
-version: 0.1
+version: 0.4
 author: CyNicole
 description: Makes hard harder.
 commands:

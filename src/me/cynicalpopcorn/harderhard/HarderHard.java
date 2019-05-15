@@ -29,6 +29,7 @@ import me.cynicalpopcorn.harderhard.Events.MobSpawnEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.Difficulty;
 import org.bukkit.World;
+import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
@@ -110,10 +111,6 @@ public class HarderHard extends JavaPlugin {
         getConfig().addDefault("misc.bed-hunger.enabled", true);
         getConfig().addDefault("misc.bed-hunger.value", 10);
         
-        //DO NOT CHANGE
-        //WILL BREAK AUTO-UPDATING
-        getConfig().addDefault("do-not-edit.version", 0.1);
-        
         getConfig().options().copyDefaults(true);
         saveConfig();
     }
@@ -134,12 +131,14 @@ public class HarderHard extends JavaPlugin {
         URLConnection connection = null;
         BufferedReader br;
         
+        PluginDescriptionFile pdf = this.getDescription();
+        
         try {
             url = new URL("https://plugins.mafuyu.club/harderhard.txt");
             connection = url.openConnection();            
             br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
             
-            if (br.readLine().equals(String.valueOf(getConfig().getDouble("do-not-edit.version")))) {
+            if (br.readLine().equals(pdf.getVersion())) {
                 getLogger().info("HarderHard is up to date!");
             } else {
                 getLogger().info("HarderHard is outdated. You may wish to consider updating!");
