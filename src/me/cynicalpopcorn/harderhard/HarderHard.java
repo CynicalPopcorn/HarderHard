@@ -28,7 +28,6 @@ import me.cynicalpopcorn.harderhard.Events.MiscEvents;
 import org.bukkit.Bukkit;
 import org.bukkit.Difficulty;
 import org.bukkit.World;
-import org.bukkit.event.EventPriority;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
