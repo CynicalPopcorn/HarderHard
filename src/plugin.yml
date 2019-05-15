@@ -1,0 +1,9 @@
+main: me.cynicalpopcorn.harderhard.HarderHard
+name: HarderHard
+version: 0.1
+author: CyNicole
+description: Makes hard harder.
+commands:
+    hhreload:
+        description: Reload the configuration file.
+        usage: /hhreload
