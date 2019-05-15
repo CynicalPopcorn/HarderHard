@@ -30,7 +30,7 @@ import org.bukkit.event.player.PlayerBedLeaveEvent;
 import org.bukkit.event.player.PlayerExpChangeEvent;
 
 /**
- *
+ * Event handlers for miscellaneous-related events
  * @author Nicole
  */
 public class MiscEvents implements Listener {

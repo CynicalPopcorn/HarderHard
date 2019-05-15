@@ -41,6 +41,9 @@ public class HarderHard extends JavaPlugin {
     private static HarderHard instance;
     private static World overworld;
     
+    /**
+     * Enabling the plugin
+     */
     @Override
     public void onEnable() {
         //Get instance
@@ -66,22 +69,37 @@ public class HarderHard extends JavaPlugin {
         SetupEvents();
     }
     
+    /**
+     * Disabling of the plugin
+     */
     @Override
     public void onDisable() {
         getLogger().info("Disabled HarderHard");
     }
     
+    /**
+     * Get a static instance of the plugin
+     * @return HarderHard
+     */
     public static HarderHard getInstance() {
         return instance;
     }
     
+    /**
+     * Get the main world of the server
+     * @return World
+     */
     public static World getOverworld() {
         return overworld;
     }
     
+    /**
+     * Setup the default config file
+     */
     public void SetupConfiguration() {
         //Default config     
         //Nerf regen
+        getConfig().addDefault("nerf-regen.enable", true);
         getConfig().addDefault("nerf-regen.hunger.enabled", true);
         getConfig().addDefault("nerf-regen.hunger.scale", 0.75);
         getConfig().addDefault("nerf-regen.hunger.hardernight.enabled", true);
@@ -92,6 +110,7 @@ public class HarderHard extends JavaPlugin {
         getConfig().addDefault("nerf-regen.potion.regen.scale", 0.75);
         
         //Damage extra
+        getConfig().addDefault("extra-damage.enable", true);
         getConfig().addDefault("extra-damage.hunger.enabled", true);
         getConfig().addDefault("extra-damage.fire-tick.enabled", true);
         getConfig().addDefault("extra-damage.hunger.value", 1);
@@ -102,10 +121,12 @@ public class HarderHard extends JavaPlugin {
         getConfig().addDefault("extra-damage.projectiles.value", 1);
         
         //Mob spawning config
+        getConfig().addDefault("mobs.enable", true);
         getConfig().addDefault("mobs.spawning.health-boost.enabled", true);
         getConfig().addDefault("mobs.spawning.health-boost.scale", 1.5);
         
         //Experience
+        getConfig().addDefault("misc.enable", true);
         getConfig().addDefault("misc.experience-nerf.enabled", true);
         getConfig().addDefault("misc.experience-nerf.scale", 0.5);
         getConfig().addDefault("misc.bed-hunger.enabled", true);
@@ -115,17 +136,26 @@ public class HarderHard extends JavaPlugin {
         saveConfig();
     }
     
+    /**
+     * Setup the commands
+     */
     public void SetupCommands() {
         getCommand("hhreload").setExecutor(new ReloadConfiguration());
     }
     
+    /**
+     * Sets up the event listeners depending on if the modules are enabled
+     */
     public void SetupEvents() {
-        Bukkit.getServer().getPluginManager().registerEvents(new DamageEvent(), this);
-        Bukkit.getServer().getPluginManager().registerEvents(new HealEvent(), this);
-        Bukkit.getServer().getPluginManager().registerEvents(new MiscEvents(), this);
-        Bukkit.getServer().getPluginManager().registerEvents(new MobSpawnEvent(), this);
+        if (getConfig().getBoolean("nerf-regen.enable")) Bukkit.getServer().getPluginManager().registerEvents(new HealEvent(), this);
+        if (getConfig().getBoolean("extra-damage.enable")) Bukkit.getServer().getPluginManager().registerEvents(new DamageEvent(), this);
+        if (getConfig().getBoolean("misc.enable")) Bukkit.getServer().getPluginManager().registerEvents(new MiscEvents(), this);
+        if (getConfig().getBoolean("mobs.enable")) Bukkit.getServer().getPluginManager().registerEvents(new MobSpawnEvent(), this);
     }
     
+    /**
+     * Check for updates for the plugin
+     */
     public void UpdateCheck() {
         URL url = null;
         URLConnection connection = null;

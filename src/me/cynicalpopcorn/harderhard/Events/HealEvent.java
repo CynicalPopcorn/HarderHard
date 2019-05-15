@@ -25,7 +25,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityRegainHealthEvent;
 
 /**
- *
+ * Healing event handler
  * @author Nicole
  */
 public class HealEvent implements Listener {

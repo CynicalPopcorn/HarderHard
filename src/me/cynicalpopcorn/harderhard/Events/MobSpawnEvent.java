@@ -25,7 +25,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 
 /**
- *
+ * Handler(s) for hostile mob related events such as spawning
  * @author Nicole
  */
 public class MobSpawnEvent implements Listener {
