@@ -25,6 +25,7 @@ import me.cynicalpopcorn.harderhard.Commands.ReloadConfiguration;
 import me.cynicalpopcorn.harderhard.Events.DamageEvent;
 import me.cynicalpopcorn.harderhard.Events.HealEvent;
 import me.cynicalpopcorn.harderhard.Events.MiscEvents;
+import me.cynicalpopcorn.harderhard.Events.MobSpawnEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.Difficulty;
 import org.bukkit.World;
@@ -99,6 +100,10 @@ public class HarderHard extends JavaPlugin {
         getConfig().addDefault("extra-damage.projectiles.enabled", true);
         getConfig().addDefault("extra-damage.projectiles.value", 1);
         
+        //Mob spawning config
+        getConfig().addDefault("mobs.spawning.health-boost.enabled", true);
+        getConfig().addDefault("mobs.spawning.health-boost.scale", 1.5);
+        
         //Experience
         getConfig().addDefault("misc.experience-nerf.enabled", true);
         getConfig().addDefault("misc.experience-nerf.scale", 0.5);
@@ -121,6 +126,7 @@ public class HarderHard extends JavaPlugin {
         Bukkit.getServer().getPluginManager().registerEvents(new DamageEvent(), this);
         Bukkit.getServer().getPluginManager().registerEvents(new HealEvent(), this);
         Bukkit.getServer().getPluginManager().registerEvents(new MiscEvents(), this);
+        Bukkit.getServer().getPluginManager().registerEvents(new MobSpawnEvent(), this);
     }
     
     public void UpdateCheck() {
