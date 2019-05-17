@@ -47,6 +47,8 @@ public class DamageEvent implements Listener {
                     if (config.getBoolean("extra-damage.mob-damage.enabled")) event.setDamage(event.getDamage() + config.getDouble("extra-damage.mob-damage.value"));
                 case PROJECTILE:
                     if (config.getBoolean("extra-damage.projectiles.enabled")) event.setDamage(event.getDamage() + config.getDouble("extra-damage.projectiles.value"));
+                case FALL:
+                    if (config.getBoolean("extra-damage.fall.enabled")) event.setDamage(event.getDamage() + config.getDouble("extra-damage.fall.value"));
             }
         }
     }

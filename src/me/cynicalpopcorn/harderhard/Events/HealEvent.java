@@ -48,9 +48,9 @@ public class HealEvent implements Listener {
                                 return;
                             }
                         }
-                    } 
-                    
-                    event.setAmount(config.getDouble("nerf-regen.hunger.scale") * event.getAmount());
+                        
+                        event.setAmount(config.getDouble("nerf-regen.hunger.scale") * event.getAmount());
+                    }                                 
                 case MAGIC:
                     if (config.getBoolean("nerf-regen.potion.instant.enabled")) event.setAmount(config.getDouble("nerf-regen.potion.instant.scale") * event.getAmount());
                 case MAGIC_REGEN:

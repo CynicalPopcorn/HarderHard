@@ -119,6 +119,8 @@ public class HarderHard extends JavaPlugin {
         getConfig().addDefault("extra-damage.mob-damage.value", 1.5);
         getConfig().addDefault("extra-damage.projectiles.enabled", true);
         getConfig().addDefault("extra-damage.projectiles.value", 1);
+        getConfig().addDefault("extra-damage.fall.enabled", true);
+        getConfig().addDefault("extra-damage.fall.value", 1);
         
         //Mob spawning config
         getConfig().addDefault("mobs.enable", true);
