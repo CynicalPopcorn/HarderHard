@@ -18,6 +18,7 @@ package me.cynicalpopcorn.harderhard.Events;
 
 import me.cynicalpopcorn.harderhard.HarderHard;
 import org.bukkit.attribute.Attribute;
+import org.bukkit.attribute.AttributeInstance;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Monster;
 import org.bukkit.event.EventHandler;
@@ -41,7 +42,10 @@ public class MobSpawnEvent implements Listener {
             
             //Set the monsters health
             if (config.getBoolean("mobs.spawning.health-boost.enabled")) {
-                monsterSpawned.setHealth(config.getDouble("mobs.spawning.health-boost.scale") * monsterSpawned.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue());
+                AttributeInstance maxHealthAttribute = monsterSpawned.getAttribute(Attribute.GENERIC_MAX_HEALTH);
+                double MAX_HP = config.getDouble("mobs.spawning.health-boost.scale") * maxHealthAttribute.getValue();
+                maxHealthAttribute.setBaseValue(MAX_HP);
+                monsterSpawned.setHealth(MAX_HP);
             }
         }
     }

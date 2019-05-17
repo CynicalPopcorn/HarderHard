@@ -73,7 +73,7 @@ public class MiscEvents implements Listener {
         
         //Is it day?
         if (isDay(curWorld)) {
-            if (curWorld.isThundering()) {
+            if (!curWorld.isThundering()) {
                 //Assume slept 
                 int curFood = player.getFoodLevel();
                 player.setFoodLevel(curFood - config.getInt("misc.bed-hunger.value"));
